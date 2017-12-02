@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameInitialize : MonoBehaviour {
-	public GameObject gameBg,planeBody;
+	public GameObject gameBg,planeBody,attackAnima;
 	public int[,] gameMap;
 	public int[,] 
 	plane_1 = new int[4,5]{{0,0,1,0,0},{1,1,1,1,1},{0,0,1,0,0},{0,1,1,1,0}};
 //	public int[,] intArray = new int[2,3] {{1,2,3},{4,5,6}};
 
-	private int bgWidth = 9,bgHigh = 16;
+	public int bgWidth = 9,bgHigh = 16;
 	// Use this for initialization
 	void Start () {
 		initializeBg ();
@@ -32,6 +32,9 @@ public class GameInitialize : MonoBehaviour {
 					float posX = 110f * i;
 					float posY = 110f * j;
 					bgCube.transform.position = new Vector3 (posX + 50f, posY + 50f, 0);
+					bgCube.GetComponent<PlayerGun> ().mapPosx = i;
+					bgCube.GetComponent<PlayerGun> ().mapPosy = j;
+					bgCube.GetComponent<PlayerGun> ().cubeKind = false;
 				}
 			
 			}
@@ -55,6 +58,9 @@ public class GameInitialize : MonoBehaviour {
 					float posY = 110f * j;
 					bgCube.transform.position = new Vector3 (posX + 50f, posY + 50f, 0);
 					Debug.Log (gameMap[i,j]);
+					bgCube.GetComponent<PlayerGun> ().mapPosx = i;
+					bgCube.GetComponent<PlayerGun> ().mapPosy = j;
+					bgCube.GetComponent<PlayerGun> ().cubeKind = true;
 				}
 
 			}

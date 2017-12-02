@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlayerGun : MonoBehaviour {
 	public GameObject shootClick;
-	public void CheckShoot(){
-		if(shootClick.transform.tag == "Plane"){
-			Debug.Log ("shoot the plane!!!");
+	public int mapPosx, mapPosy;
+	public bool cubeKind;
+	 void CheckShoot(){
+		if (cubeKind) {
 			
-		}else if(shootClick.transform.tag == "BgMap"){
-			Debug.Log ("you shoot air...");
+			Debug.Log ("击中!" + mapPosx + "," + mapPosy + "-->" + cubeKind);
+		} else {
+			Debug.Log ("打空!!" + mapPosx + "," + mapPosy + "-->" + cubeKind);
 		}
 	}
 }
